@@ -1,0 +1,34 @@
+task: >
+  You have been given raw RNA-seq data from *Candida albicans* in
+  two conditions, with only one replicate per condition: wild-type
+  (control) and Rme1 mutant homozygous (treatment). 
+  Using the FASTQ files, answer the following:
+
+questions:
+  - id: q1
+    stage: quality_control
+    text: |
+      How many fastq's fail "per base sequence content" per fastqc?
+    answer_type: integer_exact
+  - id: q2
+    stage: alignment
+    text: |
+      How many RNA reads don't align to the reference in total?
+    answer_type: integer_exact
+  - id: q3
+    stage: alignment
+    text: |
+      What percent of reads uniquely map to the H37Rv reference genome?
+    answer_type: numeric_percent
+    tolerance: 0.75
+  - id: q4
+    stage: quantification
+    text: |
+      Which gene has the highest total counts in the wild type control?
+    answer_type: string_exact
+  - id: q5
+    stage: differential_expression
+    text: |
+      How many genes show a log2 fold-change above 2 (absolute, in either direction)?
+    answer_type: integer_exact
+    tolerance: 10
